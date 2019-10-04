@@ -6,17 +6,17 @@ void pop();
 int size();
 void imprimir();
 
-struct Pila{
+struct Lista{
 
 	int dato;
-	struct Pila *siguiente;
+	struct Lista *siguiente;
 };
 
 int 
 main(void)
 {
 	
-	struct Pila* mipila=NULL;
+	struct Lista* mipila=NULL;
 
 	push(&mipila);
 	push(&mipila);
@@ -44,23 +44,23 @@ main(void)
 }
 
 void 
-push(struct Pila **pila){
+push(struct Lista **pila){
 
-	struct Pila* nuevo = malloc(sizeof(struct Pila));
+	struct Lista* nuevo = malloc(sizeof(struct Lista));
 	scanf("\n%d", &nuevo->dato);
 	nuevo->siguiente = *pila;
 	*pila = nuevo;
 }
 
 void 
-pop(struct Pila **pila){
+pop(struct Lista **pila){
 
 	printf("%d\n",(*pila)->dato);
 	*pila = (*pila)->siguiente;
 }
 
 int
-size(struct Pila *pila){
+size(struct Lista *pila){
 
 	int n=0;
 
@@ -75,7 +75,7 @@ size(struct Pila *pila){
 }
 
 void
-imprimir(struct Pila *pila){
+imprimir(struct Lista *pila){
 
 	while(pila != NULL){
 
