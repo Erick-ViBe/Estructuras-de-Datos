@@ -5,10 +5,11 @@
 void insertar();
 void mostrar();
 void revesmostrar();
+
 struct Lista eliminar();
 
 struct Lista{
-	
+
 	int dato;
 	struct Lista *siguiente;
 	struct Lista *anterior;
@@ -18,7 +19,7 @@ int main(void)
 {
 
 	struct Lista* milista=NULL;
-	
+
 	insertar(&milista);
 	insertar(&milista);
 	insertar(&milista);
@@ -100,7 +101,7 @@ struct Lista eliminar(struct Lista *l){
 	}
 
 	if (p == 0){
-		
+
 		l = l->siguiente;
 		l->anterior = NULL;
 		return *l;
