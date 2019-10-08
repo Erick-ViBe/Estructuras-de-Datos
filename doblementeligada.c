@@ -2,10 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-void insertar();
+void insertar();23eebd4342ae55ef66e5d23390dcc3253e155ba9
 void mostrar();
 void revesmostrar();
-
 struct Lista eliminar();
 
 struct Lista{
