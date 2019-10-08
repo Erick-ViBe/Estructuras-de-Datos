@@ -4,8 +4,7 @@
 int main(void)
 {
 
-	//Codigo de pila
-	/*Esto solo es prueba del git*/
+	//Para la cola se utilizara una lista soble enlazada
 
 	return 0;
 }
