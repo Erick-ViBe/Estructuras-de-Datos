@@ -4,7 +4,7 @@
 int
 main(void){
 
-	//hola xddd
+	//prueba de Github
 
 	int tamano_hash = 25;
 	int hash[tamano_hash];
