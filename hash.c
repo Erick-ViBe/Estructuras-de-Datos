@@ -4,8 +4,6 @@
 int
 main(void){
 
-	//prueba de Github
-
 	int tamano_hash = 25;
 	int hash[tamano_hash];
 	int aux;
