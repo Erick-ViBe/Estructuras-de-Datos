@@ -1,8 +1,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int 
+int
 main(void){
+
+	//hola xddd
 
 	int tamano_hash = 25;
 	int hash[tamano_hash];
@@ -25,7 +27,7 @@ main(void){
 	hash[pos] = aux;
 
 	for (int i = 0; i < tamano_hash; ++i){
-		
+
 		printf("%d\n", hash[i]);
 	}
 
