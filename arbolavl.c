@@ -8,9 +8,15 @@ struct Nodo{
 	struct Nodo *hijoIzquierdo;
 };
 
+void insertar();
+
 int main(void) {
 
    struct Nodo *raiz = NULL;
+
+	insertar(&raiz);
+
+	printf("%d\n", raiz->dato);
 
    return 0;
 }
@@ -21,10 +27,13 @@ void insertar(struct Nodo **raizArbol) {
 
    if (*raizArbol == NULL) {
       *raizArbol = malloc(sizeof(struct Nodo));
-      scanf("%d\n", aux);
-      *raizArbol->dato = datoRecibido;
+      scanf("%d", &datoRecibido);
+      (*raizArbol)->dato = datoRecibido;
       return;
    }else{
+
+		// struct Nodo *nuevo = malloc(sizeof(struct Nodo));
+		printf("ajhsouaos\n");
 
    }
 }
