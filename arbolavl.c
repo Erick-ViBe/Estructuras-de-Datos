@@ -14,6 +14,7 @@ struct Nodo* rotacionDerecha();
 struct Nodo* rotacionIzquierda();
 int calcularAltura();
 int calcularFE();
+int buscar();
 
 int main(void) {
 
@@ -51,7 +52,9 @@ int main(void) {
 	printf("%d - (%d)\n", raiz->hijoDerecho->hijoIzquierdo->hijoDerecho->dato , raiz->hijoDerecho->hijoIzquierdo->hijoDerecho->fe);
 	printf("%d - (%d)\n", raiz->hijoIzquierdo->dato , raiz->hijoIzquierdo->fe);
 	printf("%d - (%d)\n", raiz->hijoIzquierdo->hijoDerecho->dato , raiz->hijoIzquierdo->hijoDerecho->fe);
-	printf("%d - (%d)\n", raiz->hijoIzquierdo->hijoIzquierdo->dato , raiz->hijoIzquierdo->hijoIzquierdo->fe);
+	printf("%d - (%d)---\n", raiz->hijoIzquierdo->hijoIzquierdo->dato , raiz->hijoIzquierdo->hijoIzquierdo->fe);
+
+	printf("-%d-\n", buscar(raiz, 4));
 
 	return 0;
 }
@@ -192,4 +195,20 @@ int calcularFE(struct Nodo *raiz){
 	alturaDerecha = calcularAltura(raiz->hijoDerecho);
 
 	return alturaDerecha - alturaIzquierda;
+}
+
+int buscar(struct Nodo *raiz, int datoABuscar){
+
+	if (raiz == NULL) {
+
+		return 0;
+	} else if (raiz->dato == datoABuscar) {
+
+		return 1;
+	}	else if (datoABuscar < raiz->dato) {
+
+		return buscar(raiz->hijoIzquierdo, datoABuscar);
+	} else{
+		return buscar(raiz->hijoIzquierdo, datoABuscar);
+	}
 }
