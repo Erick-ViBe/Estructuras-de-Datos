@@ -54,7 +54,7 @@ int main(void) {
 	printf("%d - (%d)\n", raiz->hijoIzquierdo->hijoDerecho->dato , raiz->hijoIzquierdo->hijoDerecho->fe);
 	printf("%d - (%d)---\n", raiz->hijoIzquierdo->hijoIzquierdo->dato , raiz->hijoIzquierdo->hijoIzquierdo->fe);
 
-	printf("-%d-\n", buscar(raiz, 4));
+	printf("-%d-\n", buscar(raiz, 3));
 
 	return 0;
 }
@@ -209,6 +209,7 @@ int buscar(struct Nodo *raiz, int datoABuscar){
 
 		return buscar(raiz->hijoIzquierdo, datoABuscar);
 	} else{
-		return buscar(raiz->hijoIzquierdo, datoABuscar);
+
+		return buscar(raiz->hijoDerecho, datoABuscar);
 	}
 }
