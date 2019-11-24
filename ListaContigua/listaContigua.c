@@ -5,85 +5,79 @@ void insertar();
 void mostrar();
 void eliminar();
 
-struct Lista{
+struct ListaContigua{
 
-    int act;
-    int tam;
+    int actual;
+    int tamano;
     int *dato;
 };
-int main(void)
-{
 
-    struct Lista mil;
-    mil.act=0;
-    struct Lista temp;
-    int e;
+int main(void){
 
-    insertar(&mil, &temp);
-    insertar(&mil, &temp);
-    insertar(&mil, &temp);
-    insertar(&mil, &temp);
-    insertar(&mil, &temp);
+   struct ListaContigua *milista = NULL;
 
-    printf("-------------------------------------");
+   insertar (&milista, 7);
+   insertar (&milista, 34);
+   insertar (&milista, 2);
+   printf("%d\n", *milista->dato);
+   printf("%d\n", *milista->dato+1);
+   printf("%d\n", *milista->dato+2);
 
-    mostrar(&mil);
-
-    return 0;
+   return 0;
 }
 
-//maincpy- memory copy
+void insertar(struct ListaContigua **lista, int dato){
 
-void insertar(struct Lista *l, struct Lista *t){
+   if(*lista == NULL){
 
-    if (l->act==0)
-    {
-        l->dato = (int *)malloc(1*sizeof(int));
+      *lista = malloc(sizeof(struct ListaContigua));
+      if (*lista==NULL)
+         printf ("Error de Memoria");
 
-        if (l->dato==NULL)
-            printf ("Error de Mem.");
+      (*lista)->dato = (int *)malloc(sizeof(int));
+      if ((*lista)->dato==NULL){
+         printf ("Error de Memoria");
+      }
 
-        scanf("\n%d",l->dato+l->act);
-        l->act++;
+         *((*lista)->dato) = dato;
 
-        l->tam=1;
+         (*lista)->actual++;
+         (*lista)->tamano=1;
 
     } else{
 
-        if (l->act<l->tam)
+        if ((*lista)->actual < (*lista)->tamano)
         {
-            scanf("\n%d",l->dato+l->act);
-            l->act++;
+            *((*lista)->dato) = dato;
+            (*lista)->actual++;
         }else{
+            int *temporal = NULL;
+            temporal = (int *)malloc((2*((*lista)->tamano))*sizeof(int));
+            if (temporal==NULL)
+               printf ("Error de Memoria");
+            int i;
+            for (i = 0; i < (*lista)->tamano; i++){
+   	         *(temporal + i) = *((*lista)->dato + i);
+   	      }
+            free ((*lista)->dato);
+            (*lista)->dato = temporal;
+            (*lista)->tamano *= 2;
 
-            t->dato = (int *)malloc((2*(l->tam))*sizeof(int));
-            if (t->dato==NULL)
-                printf ("Error de Mem.");
-            for (int j = 0; j < l->tam; ++j)
-            {
-                *(t->dato+j) = *(l->dato+j);
-            }
-            t->act = l->act;
-            t->tam = l->tam*2;
-            l->act = t->act;
-            l->tam = t->tam;
-            l->dato = t->dato;
+            *((*lista)->dato + (*lista)->actual) = dato;
 
-            scanf("\n%d",l->dato+l->act);
-            l->act++;
+            (*lista)->actual += 1;
         }
     }
 }
 
-void mostrar(struct Lista *l){
+void mostrar(struct ListaContigua *l){
 
-    for (int i = 0; i < l->act; ++i)
-    {
-        printf("\n%d\n", *l->dato+i);
+    for (int i = 0; i < l->actual; ++i){
+        printf("%d\n", *l->dato+i);
     }
 }
 
-void eliminar(struct Lista *l, struct Lista *t, int el){
+void eliminar(struct ListaContigua *l, struct ListaContigua *t, int el){
 
-    
+
 }
