@@ -15,6 +15,8 @@ void insertarInicio(struct ListaLigada **l);
 
 void mostrar(struct ListaLigada *l);
 
+int tamanoLista(struct ListaLigada *l);
+
 struct ListaLigada eliminar(struct ListaLigada *l);
 
 #endif

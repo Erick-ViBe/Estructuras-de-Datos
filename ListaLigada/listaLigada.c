@@ -18,6 +18,19 @@ void mostrar(struct ListaLigada *l){
 	}
 }
 
+int tamanoLista(struct ListaLigada *l){
+
+	int tamano=0;
+
+	while(l != NULL){
+
+		tamano++;
+		l = l->siguiente;
+	}
+
+	return tamano;
+}
+
 struct ListaLigada eliminar(struct ListaLigada *l){
 
 	struct ListaLigada* a;

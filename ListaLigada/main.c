@@ -10,6 +10,10 @@ int main(void){
 	insertarInicio(&milista);
 	insertarInicio(&milista);
 
+   printf("------------------------\n");
+
+   printf("%d\n", tamanoLista(milista));
+
 	printf("------------------------\n");
 
 	*milista = eliminar(milista);
@@ -18,6 +22,10 @@ int main(void){
 	printf("------------------------\n");
 
 	mostrar(milista);
+
+	printf("------------------------\n");
+
+	printf("%d\n", tamanoLista(milista));
 
    return 0;
 }
