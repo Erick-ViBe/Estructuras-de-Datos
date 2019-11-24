@@ -5,16 +5,16 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct Lista{
+struct ListaLigada{
 
 	int dato;
-	struct Lista *siguiente;
+	struct ListaLigada *siguiente;
 };
 
-void insertar(struct Lista **l);
+void insertarInicio(struct ListaLigada **l);
 
-void mostrar(struct Lista *l);
+void mostrar(struct ListaLigada *l);
 
-struct Lista eliminar(struct Lista *l);
+struct ListaLigada eliminar(struct ListaLigada *l);
 
 #endif

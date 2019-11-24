@@ -2,13 +2,13 @@
 
 int main(void){
 
-	struct Lista* milista=NULL;
+	struct ListaLigada* milista=NULL;
 
-	insertar(&milista);
-	insertar(&milista);
-	insertar(&milista);
-	insertar(&milista);
-	insertar(&milista);
+	insertarInicio(&milista);
+	insertarInicio(&milista);
+	insertarInicio(&milista);
+	insertarInicio(&milista);
+	insertarInicio(&milista);
 
 	printf("------------------------\n");
 

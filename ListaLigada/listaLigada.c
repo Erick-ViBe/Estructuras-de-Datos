@@ -1,14 +1,14 @@
 #include "listaLigada.h"
 
-void insertar(struct Lista **l){
+void insertarInicio(struct ListaLigada **l){
 
-	struct Lista* nuevo = malloc(sizeof(struct Lista));
+	struct ListaLigada* nuevo = malloc(sizeof(struct ListaLigada));
 	scanf("\n%d", &nuevo->dato);
 	nuevo->siguiente = *l;
 	*l = nuevo;
 }
 
-void mostrar(struct Lista *l){
+void mostrar(struct ListaLigada *l){
 
 	while(l != NULL){
 
@@ -18,10 +18,10 @@ void mostrar(struct Lista *l){
 	}
 }
 
-struct Lista eliminar(struct Lista *l){
+struct ListaLigada eliminar(struct ListaLigada *l){
 
-	struct Lista* a;
-	struct Lista* b = l;
+	struct ListaLigada* a;
+	struct ListaLigada* b = l;
 	int p=0;
 
 	int numaelim;
