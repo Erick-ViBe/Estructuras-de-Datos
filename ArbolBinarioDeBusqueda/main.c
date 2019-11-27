@@ -1,4 +1,4 @@
-#include "arbolAVL.h"
+#include "arbolBinarioBusqueda.h"
 
 int main(void) {
 
@@ -18,6 +18,8 @@ int main(void) {
 
 	printf("\n-%d-\n", buscar(raiz, 3));
 	printf("-%d-\n\n", buscar(raiz, 5));
+
+   printf("%d\n\n", calcularAltura(raiz));
 
 	return 0;
 }

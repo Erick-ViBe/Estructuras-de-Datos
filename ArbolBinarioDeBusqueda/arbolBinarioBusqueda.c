@@ -1,4 +1,4 @@
-#include "arbolAVL.h"
+#include "arbolBinarioBusqueda.h"
 
 struct Nodo*
 insertar(struct Nodo *raizArbol, int datoInsertar) {
@@ -12,7 +12,6 @@ insertar(struct Nodo *raizArbol, int datoInsertar) {
  			return NULL;
  		}
 		nuevo->dato = datoInsertar;
-		nuevo->fe = 0;
 		nuevo->hijoDerecho = NULL;
 		nuevo->hijoIzquierdo = NULL;
 		return nuevo;
@@ -31,78 +30,8 @@ insertar(struct Nodo *raizArbol, int datoInsertar) {
 			raizArbol->hijoIzquierdo = insertar(raizArbol->hijoIzquierdo, datoInsertar);
 
 		}
-		raizArbol->fe = calcularFE(raizArbol);
-		if ((raizArbol->fe == -2) && (raizArbol->hijoIzquierdo->fe == -1)) {
-			raizArbol = rotacionDerecha(raizArbol);
-			raizArbol->fe = calcularFE(raizArbol);
-			raizArbol->hijoDerecho->fe = calcularFE(raizArbol->hijoDerecho);
-			raizArbol->hijoIzquierdo->fe = calcularFE(raizArbol->hijoIzquierdo);
-		}
-
-		if ((raizArbol->fe == 2) && (raizArbol->hijoDerecho->fe == 1)) {
-			raizArbol = rotacionIzquierda(raizArbol);
-			raizArbol->fe = calcularFE(raizArbol);
-			raizArbol->hijoDerecho->fe = calcularFE(raizArbol->hijoDerecho);
-			raizArbol->hijoIzquierdo->fe = calcularFE(raizArbol->hijoIzquierdo);
-		}
-
-		if ((raizArbol->fe > 1) && (raizArbol->hijoDerecho->fe < 0)) {
-			raizArbol->hijoDerecho = rotacionDerecha(raizArbol->hijoDerecho);
-			raizArbol = rotacionIzquierda(raizArbol);
-			raizArbol->fe = calcularFE(raizArbol);
-			raizArbol->hijoDerecho->fe = calcularFE(raizArbol->hijoDerecho);
-			raizArbol->hijoIzquierdo->fe = calcularFE(raizArbol->hijoIzquierdo);
-		}
-
-		if ((raizArbol->fe < -1) && (raizArbol->hijoIzquierdo->fe > 0)) {
-			raizArbol->hijoIzquierdo = rotacionIzquierda(raizArbol->hijoIzquierdo);
-			raizArbol = rotacionDerecha(raizArbol);
-			raizArbol->fe = calcularFE(raizArbol);
-			raizArbol->hijoDerecho->fe = calcularFE(raizArbol->hijoDerecho);
-			raizArbol->hijoIzquierdo->fe = calcularFE(raizArbol->hijoIzquierdo);
-		}
 
 		return raizArbol;
-}
-
-struct Nodo*
-rotacionDerecha(struct Nodo *raizDesbalanceada) {
-
-	struct Nodo *aux = raizDesbalanceada;
-		struct Nodo *aux2 = NULL;
-	raizDesbalanceada = raizDesbalanceada->hijoIzquierdo;
-
-	if (raizDesbalanceada->hijoDerecho != NULL) {
-
-		aux2 = raizDesbalanceada->hijoDerecho;
-	}
-
-	raizDesbalanceada->hijoDerecho = aux;
-
-	raizDesbalanceada->hijoDerecho->hijoIzquierdo = aux2;
-
-	return raizDesbalanceada;
-
-}
-
-struct Nodo*
-rotacionIzquierda(struct Nodo *raizDesbalanceada) {
-
-	struct Nodo *aux = raizDesbalanceada;
-		struct Nodo *aux2 = NULL;
-	raizDesbalanceada = raizDesbalanceada->hijoDerecho;
-
-	if (raizDesbalanceada->hijoIzquierdo != NULL) {
-
-		aux2 = raizDesbalanceada->hijoIzquierdo;
-	}
-
-	raizDesbalanceada->hijoIzquierdo = aux;
-
-	raizDesbalanceada->hijoIzquierdo->hijoDerecho = aux2;
-
-	return raizDesbalanceada;
-
 }
 
 int calcularAltura(struct Nodo *raiz){
@@ -121,21 +50,6 @@ int calcularAltura(struct Nodo *raiz){
 		return alturaIzquierda+1;
 	}
 	return alturaDerecha+1;
-}
-
-int calcularFE(struct Nodo *raiz){
-
-	int alturaDerecha = 0;
-	int alturaIzquierda = 0;
-
-	if (raiz == NULL) {
-		return 0;
-	}
-
-	alturaIzquierda = calcularAltura(raiz->hijoIzquierdo);
-	alturaDerecha = calcularAltura(raiz->hijoDerecho);
-
-	return alturaDerecha - alturaIzquierda;
 }
 
 int buscar(struct Nodo *raiz, int datoABuscar){
