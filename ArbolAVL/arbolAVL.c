@@ -15,6 +15,7 @@ struct Nodo* rotacionIzquierda();
 int calcularAltura();
 int calcularFE();
 int buscar();
+void mostrar ();
 
 int main(void) {
 
@@ -22,39 +23,20 @@ int main(void) {
 
 	int datoInsertar;
 
-	scanf("%d", &datoInsertar);
-	raiz = insertar(raiz, datoInsertar);
-	scanf("%d", &datoInsertar);
-	raiz = insertar(raiz, datoInsertar);
-	scanf("%d", &datoInsertar);
-	raiz = insertar(raiz, datoInsertar);
-	scanf("%d", &datoInsertar);
-	raiz = insertar(raiz, datoInsertar);
-	scanf("%d", &datoInsertar);
-	raiz = insertar(raiz, datoInsertar);
-	scanf("%d", &datoInsertar);
-	raiz = insertar(raiz, datoInsertar);
-	scanf("%d", &datoInsertar);
-	raiz = insertar(raiz, datoInsertar);
-	scanf("%d", &datoInsertar);
-	raiz = insertar(raiz, datoInsertar);
-	scanf("%d", &datoInsertar);
-	raiz = insertar(raiz, datoInsertar);
+	raiz = insertar(raiz, 13);
+	raiz = insertar(raiz, 2);
+	raiz = insertar(raiz, 4);
+	raiz = insertar(raiz, 5);
+	raiz = insertar(raiz, 36);
+	raiz = insertar(raiz, 11);
+	raiz = insertar(raiz, 42);
+	raiz = insertar(raiz, 0);
+	raiz = insertar(raiz, 12);
 
+	mostrar(raiz);
 
-	// raiz = rotacionIzquierda(raiz);
-
-	printf("%d - (%d)\n", raiz->dato , raiz->fe);
-	printf("%d - (%d)\n", raiz->hijoDerecho->dato , raiz->hijoDerecho->fe);
-	printf("%d - (%d)\n", raiz->hijoDerecho->hijoDerecho->dato , raiz->hijoDerecho->hijoDerecho->fe);
-	printf("%d - (%d)\n", raiz->hijoDerecho->hijoDerecho->hijoDerecho->dato , raiz->hijoDerecho->hijoDerecho->hijoDerecho->fe);
-	printf("%d - (%d)\n", raiz->hijoDerecho->hijoIzquierdo->dato , raiz->hijoDerecho->hijoIzquierdo->fe);
-	printf("%d - (%d)\n", raiz->hijoDerecho->hijoIzquierdo->hijoDerecho->dato , raiz->hijoDerecho->hijoIzquierdo->hijoDerecho->fe);
-	printf("%d - (%d)\n", raiz->hijoIzquierdo->dato , raiz->hijoIzquierdo->fe);
-	printf("%d - (%d)\n", raiz->hijoIzquierdo->hijoDerecho->dato , raiz->hijoIzquierdo->hijoDerecho->fe);
-	printf("%d - (%d)---\n", raiz->hijoIzquierdo->hijoIzquierdo->dato , raiz->hijoIzquierdo->hijoIzquierdo->fe);
-
-	printf("-%d-\n", buscar(raiz, 3));
+	printf("\n-%d-\n", buscar(raiz, 3));
+	printf("-%d-\n\n", buscar(raiz, 5));
 
 	return 0;
 }
@@ -212,4 +194,17 @@ int buscar(struct Nodo *raiz, int datoABuscar){
 
 		return buscar(raiz->hijoDerecho, datoABuscar);
 	}
+}
+
+void
+mostrar (struct Nodo *raiz)
+{
+  if (raiz == NULL)
+    {
+      return;
+    }
+
+  mostrar (raiz->hijoIzquierdo);
+  printf ("%d\n", raiz->dato);
+  mostrar (raiz->hijoDerecho);
 }
