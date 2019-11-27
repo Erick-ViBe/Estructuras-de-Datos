@@ -1,40 +1,7 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-void insertar();
-void mostrar();
-struct Lista eliminar();
-
-struct Lista{
-
-	int dato;
-	struct Lista *siguiente;
-};
-
-int main(void){
-
-	struct Lista* milista=NULL;
-	struct Lista* finalmilista=NULL;
-
-	insertar(&milista, &finalmilista);
-	insertar(&milista, &finalmilista);
-	insertar(&milista, &finalmilista);
-	insertar(&milista, &finalmilista);
-	insertar(&milista, &finalmilista);
-
-	printf("------------------------\n");
-
-	*milista = eliminar(milista, &finalmilista);
-	*milista = eliminar(milista, &finalmilista);
-
-	printf("------------------------\n");
-
-	mostrar(milista, finalmilista);
-}
+#include "listaCircular.h"
 
 void insertar(struct Lista **l, struct Lista **finall){
-	
+
 	struct Lista* nuevo = malloc(sizeof(struct Lista));
 	scanf("\n%d", &nuevo->dato);
 	nuevo->siguiente = *l;
@@ -62,7 +29,7 @@ void mostrar(struct Lista *l, struct Lista *finall){
 }
 
 struct Lista eliminar(struct Lista *l, struct Lista **finall){
-	
+
 	struct Lista* a;
 	struct Lista* b = l;
 	int p=0;
@@ -86,7 +53,7 @@ struct Lista eliminar(struct Lista *l, struct Lista **finall){
 		return *l;
 	}else if (l == *finall)
 	{
-		
+
 		a->siguiente = (*finall)->siguiente;
 		*finall = a;
 	}	 else	{
