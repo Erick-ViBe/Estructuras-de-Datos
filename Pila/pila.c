@@ -1,86 +1,56 @@
-#include <stdlib.h>
-#include <stdio.h>
+#include "pila.h"
 
-void push();
-void pop();
-int size();
-void imprimir();
+void push(struct Pila **mipila, int num){
 
-struct Lista{
+  struct Pila *temporal = malloc(sizeof(struct Pila));
+  temporal -> dato = num;
+  temporal -> siguiente = *mipila;
 
-	int dato;
-	struct Lista *siguiente;
-};
+  if(mipila == NULL){
+    return;
+  }
 
-int 
-main(void)
-{
-	
-	struct Lista* mipila=NULL;
+  if(*mipila == NULL){
+    *mipila = temporal;
+    return;
+  } else {
 
-	push(&mipila);
-	push(&mipila);
-	push(&mipila);
-	push(&mipila);
-	push(&mipila);
+    *mipila = temporal;
 
-	printf("--------\n");
+  }
 
-	imprimir(mipila);
-
-	printf("--------\n");
-
-	pop(&mipila);
-
-	printf("--------\n");
-
-	printf("%d\n", size(mipila));
-
-	printf("--------\n");
-
-	imprimir(mipila);
-
-	return 0;
 }
 
-void 
-push(struct Lista **pila){
+int pop(struct Pila **mipila){
 
-	struct Lista* nuevo = malloc(sizeof(struct Lista));
-	scanf("\n%d", &nuevo->dato);
-	nuevo->siguiente = *pila;
-	*pila = nuevo;
+  if(*mipila == NULL){
+    exit(1);
+  }
+
+  int valor = (**mipila).dato;
+
+  struct Pila *temporal = *mipila;
+
+  *mipila = temporal -> siguiente;
+
+  free(temporal);
+
+
+  return valor;
 }
 
-void 
-pop(struct Lista **pila){
+int top(struct Pila *mipila){
 
-	printf("%d\n",(*pila)->dato);
-	*pila = (*pila)->siguiente;
+  if(mipila == NULL){
+    exit(1);
+  }
+
+  int valor = (*mipila).dato;
+  return valor;
 }
 
-int
-size(struct Lista *pila){
-
-	int n=0;
-
-	while(pila != NULL){
-
-		n++;
-
-		pila = pila->siguiente;
-	}
-
-	return n;
-}
-
-void
-imprimir(struct Lista *pila){
-
-	while(pila != NULL){
-
-		printf("%d\n", pila->dato);
-
-		pila = pila->siguiente;
-	}
+void mostrarpila(struct Pila **mipila){
+  while(*mipila != NULL){
+    printf("%d\n", pop(mipila) );
+  }
 }
