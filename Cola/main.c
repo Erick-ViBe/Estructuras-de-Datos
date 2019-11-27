@@ -1,21 +1,24 @@
-// Aquí van las instrucciones del programa
-
 #include "cola.h"
 
 int main(void) {
 
-  struct Cola *mcola = NULL;
+   struct listaLigada *cola = NULL;
 
-  insertar(&mcola, 10);
-  insertar(&mcola, 20);
-  insertar(&mcola, 30);
-  insertar(&mcola, 40);
-  insertar(&mcola, 50);
-  insertar(&mcola, 60);
-  insertar(&mcola, 70);
+   insertar(&cola, 10);
+   insertar(&cola, 20);
+   insertar(&cola, 30);
+   insertar(&cola, 40);
+   insertar(&cola, 50);
+   insertar(&cola, 60);
+   insertar(&cola, 70);
 
-  mostrar(&mcola);
+   mostrar(&cola);
 
+   insertar(&cola, 15);
 
-  return 0;
+   printf("---------\n");
+
+   mostrar(&cola);
+
+   return 0;
 }

@@ -1,52 +1,46 @@
-// Aquí van las implementaciones de las funciones declaradas
-
 #include "cola.h"
 
-void mostrar(struct Cola **mcola){
+void mostrar(struct listaLigada **miCola){
 
-  while ((*mcola) != NULL) {
-    printf("%d\n", eliminar(mcola));
-  }
-
+   while ((*miCola) != NULL) {
+      printf("%d\n", eliminar(miCola));
+   }
 }
 
-void insertar(struct Cola **mcola, int num){
+void insertar(struct listaLigada **miCola, int num){
 
-  struct Cola *nodotemporal = malloc(sizeof(struct Cola));
-  struct Cola *ultimo = *mcola;
+   struct listaLigada *nodotemporal = malloc(sizeof(struct listaLigada));
+   struct listaLigada *ultimo = *miCola;
 
-  nodotemporal -> dato = num;
-  nodotemporal -> siguiente = NULL;
+   nodotemporal->dato = num;
+   nodotemporal->siguiente = NULL;
 
-	// Sí la lista no cuenta con ningún nodo, se creará el primero.
-  if (*mcola == NULL) {
-    *mcola = nodotemporal;
-	return;
-} else {
+   if (*miCola == NULL) {
 
-  // Recorre toda la lista y liga el nodotemporal al final de la lista.
-  while (ultimo -> siguiente != NULL){
-    ultimo = ultimo -> siguiente; // el bueno
-  }
+      *miCola = nodotemporal;
+	   return;
+   } else {
 
-  ultimo -> siguiente = nodotemporal;
+      while (ultimo -> siguiente != NULL){
+         ultimo = ultimo -> siguiente;
+      }
+      ultimo -> siguiente = nodotemporal;
+   }
 }
 
-}
+int eliminar(struct listaLigada **miCola){
 
-int eliminar(struct Cola **mcola){
-
-    if(*mcola == NULL){
+   if(*miCola == NULL){
       exit(1);
-    }
+   }
 
-    int num = (**mcola).dato;
+   int num = (**miCola).dato;
 
-    struct Cola *temporal = *mcola;
+   struct listaLigada *temporal = *miCola;
 
-      *mcola = temporal -> siguiente;
+   *miCola = temporal->siguiente;
 
-      free(temporal);
+   free(temporal);
 
-    return num;
+   return num;
 }

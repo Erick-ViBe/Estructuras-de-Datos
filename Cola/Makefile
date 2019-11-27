@@ -10,4 +10,4 @@ run: a.out
 	./a.out
 
 clean:
-	rm -f *.o a.out
+	rm -f a.out main.o cola.o

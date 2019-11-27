@@ -1,18 +1,17 @@
-// Aquí van las cabeceras de las funciones declaradas
-
 #ifndef __COLA_H__
 #define __COLA_H__
 
 #include <stdio.h>
 #include <stdlib.h>
 
-struct Cola{
-  int dato;
-  struct Cola *siguiente;
+struct listaLigada{
+
+   int dato;
+   struct listaLigada *siguiente;
 };
 
-void mostrar(struct Cola **mcola);
-void insertar(struct Cola **mcola, int num);
-int eliminar(struct Cola **mcola);
+void mostrar(struct listaLigada **miCola);
+void insertar(struct listaLigada **miCola, int num);
+int eliminar(struct listaLigada **miCola);
 
 #endif
