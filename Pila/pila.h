@@ -1,5 +1,3 @@
-// Aquí van las cabeceras de las funciones declaradas
-
 #ifndef __PILA_H__
 #define __PILA_H__
 
@@ -7,13 +5,13 @@
 #include <stdlib.h>
 
 struct Pila{
-  int dato;
-  struct Pila *siguiente;
+   int dato;
+   struct Pila *siguiente;
 };
 
-void push(struct Pila **mipila, int num);
-int pop(struct Pila **mipila);
-int top(struct Pila *mipila);
-void mostrarpila(struct Pila **mipila);
+void push(struct Pila **miPila, int num);
+int pop(struct Pila **miPila);
+int top(struct Pila *miPila);
+void mostrarpila(struct Pila **miPila);
 
 #endif

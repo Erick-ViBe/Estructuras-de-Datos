@@ -1,56 +1,55 @@
 #include "pila.h"
 
-void push(struct Pila **mipila, int num){
+void push(struct Pila **miPila, int num){
 
-  struct Pila *temporal = malloc(sizeof(struct Pila));
-  temporal -> dato = num;
-  temporal -> siguiente = *mipila;
+   struct Pila *temporal = malloc(sizeof(struct Pila));
 
-  if(mipila == NULL){
-    return;
-  }
+   temporal->dato = num;
+   temporal->siguiente = *miPila;
 
-  if(*mipila == NULL){
-    *mipila = temporal;
-    return;
-  } else {
+   if(miPila==NULL){
 
-    *mipila = temporal;
+      return;
+   }
 
-  }
+   if(*miPila==NULL){
 
+      *miPila = temporal;
+      return;
+   } else {
+
+      *miPila = temporal;
+   }
 }
 
-int pop(struct Pila **mipila){
+int pop(struct Pila **miPila){
 
-  if(*mipila == NULL){
-    exit(1);
-  }
+   if(*miPila==NULL){
+      exit(1);
+   }
+   int valor = (**miPila).dato;
 
-  int valor = (**mipila).dato;
+   struct Pila *temporal = *miPila;
 
-  struct Pila *temporal = *mipila;
+   *miPila = temporal->siguiente;
 
-  *mipila = temporal -> siguiente;
+   free(temporal);
 
-  free(temporal);
-
-
-  return valor;
+   return valor;
 }
 
-int top(struct Pila *mipila){
+int top(struct Pila *miPila){
 
-  if(mipila == NULL){
-    exit(1);
-  }
+   if(miPila==NULL){
+      exit(1);
+   }
 
-  int valor = (*mipila).dato;
-  return valor;
+   int valor = (*miPila).dato;
+   return valor;
 }
 
-void mostrarpila(struct Pila **mipila){
-  while(*mipila != NULL){
-    printf("%d\n", pop(mipila) );
-  }
+void mostrarpila(struct Pila **miPila){
+   while(*miPila!=NULL){
+      printf("%d\n", pop(miPila) );
+   }
 }
