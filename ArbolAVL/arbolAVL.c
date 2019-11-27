@@ -1,45 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-struct Nodo{
-
-	int dato;
-	int fe;
-	struct Nodo *hijoDerecho;
-	struct Nodo *hijoIzquierdo;
-};
-
-struct Nodo* insertar();
-struct Nodo* rotacionDerecha();
-struct Nodo* rotacionIzquierda();
-int calcularAltura();
-int calcularFE();
-int buscar();
-void mostrar ();
-
-int main(void) {
-
-   struct Nodo *raiz = NULL;
-
-	int datoInsertar;
-
-	raiz = insertar(raiz, 13);
-	raiz = insertar(raiz, 2);
-	raiz = insertar(raiz, 4);
-	raiz = insertar(raiz, 5);
-	raiz = insertar(raiz, 36);
-	raiz = insertar(raiz, 11);
-	raiz = insertar(raiz, 42);
-	raiz = insertar(raiz, 0);
-	raiz = insertar(raiz, 12);
-
-	mostrar(raiz);
-
-	printf("\n-%d-\n", buscar(raiz, 3));
-	printf("-%d-\n\n", buscar(raiz, 5));
-
-	return 0;
-}
+#include "arbolAVL.h"
 
 struct Nodo*
 insertar(struct Nodo *raizArbol, int datoInsertar) {
