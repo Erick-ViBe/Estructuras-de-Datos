@@ -1,47 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-void insertar();23eebd4342ae55ef66e5d23390dcc3253e155ba9
-void mostrar();
-void revesmostrar();
-struct Lista eliminar();
-
-struct Lista{
-
-	int dato;
-	struct Lista *siguiente;
-	struct Lista *anterior;
-};
-
-int main(void)
-{
-
-	struct Lista* milista=NULL;
-
-	insertar(&milista);
-	insertar(&milista);
-	insertar(&milista);
-	insertar(&milista);
-	insertar(&milista);
-
-	printf("--------\n");
-
-	*milista = eliminar(milista);
-	*milista = eliminar(milista);
-
-	printf("--------\n");
-
-	mostrar(milista);
-
-	printf("--------\n");
-
-	revesmostrar(milista);
-
-	printf("--------\n");
-
-	return 0;
-}
+#include "listaDobleLigada.h"
 
 void insertar(struct Lista **l){
 
