@@ -1,4 +1,4 @@
-#include"hashAbierto.h"
+#include "hashAbierto.h"
 
 int
 FuncionHash (char *palabra){
